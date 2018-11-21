@@ -1,0 +1,50 @@
+{
+  "name": "@cesarbr/knot-cloud-websocket",
+  "version": "0.1.0",
+  "description": "KNoT Cloud WebSocket library for NodeJS and browser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CESARBR/knot-cloud-websocket.git"
+  },
+  "main": "./dist/main.js",
+  "module": "./dist/module.mjs",
+  "browser": "./dist/browser.js",
+  "author": "KNoT",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "rollup": "^0.67.3",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
