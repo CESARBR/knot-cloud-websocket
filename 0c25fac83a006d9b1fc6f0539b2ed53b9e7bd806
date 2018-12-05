@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e6861e4_01468dee",
+        "filename": "package.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2018-12-05T17:37:34Z",
+      "side": 1,
+      "message": "ws is being added but is not being used",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "0c25fac83a006d9b1fc6f0539b2ed53b9e7bd806",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
