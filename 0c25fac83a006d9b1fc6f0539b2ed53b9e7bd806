@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f796105_399ccd51",
+        "filename": "package.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-10T23:51:28Z",
+      "side": 1,
+      "message": "It is used by isomorphic-ws. When built for Node, it will use ws, and when built for browser it will use the browser\u0027s WebSocket object.",
+      "parentUuid": "2e6861e4_01468dee",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "0c25fac83a006d9b1fc6f0539b2ed53b9e7bd806",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce3d7058_5a867b48",
         "filename": "src/Client.js",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "478d2e58_a9e594d6",
+        "filename": "src/Client.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-10T23:51:28Z",
+      "side": 1,
+      "message": "The use will start the connection and listen to the ready event, so there is no need to have a promise here (nothing to wait on).",
+      "parentUuid": "ce3d7058_5a867b48",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "0c25fac83a006d9b1fc6f0539b2ed53b9e7bd806",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c21beae_392a7d68",
         "filename": "src/Client.js",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-12-05T22:50:04Z",
       "side": 1,
       "message": "Should we have a keepalive to avoid closing the connection?",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "0c25fac83a006d9b1fc6f0539b2ed53b9e7bd806",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8de13f1_37d41b82",
+        "filename": "src/Client.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-10T23:51:28Z",
+      "side": 1,
+      "message": "Do we need to manually start a keep alive to keep the connection?",
+      "parentUuid": "6c21beae_392a7d68",
       "range": {
         "startLine": 23,
         "startChar": 7,
