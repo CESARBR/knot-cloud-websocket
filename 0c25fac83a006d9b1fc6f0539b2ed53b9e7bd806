@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "11ab4e20_129f5eaf",
+        "filename": "src/Client.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2018-12-11T18:55:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "478d2e58_a9e594d6",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "0c25fac83a006d9b1fc6f0539b2ed53b9e7bd806",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c21beae_392a7d68",
         "filename": "src/Client.js",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Do we need to manually start a keep alive to keep the connection?",
       "parentUuid": "6c21beae_392a7d68",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "0c25fac83a006d9b1fc6f0539b2ed53b9e7bd806",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458cc2ee_ffe4a819",
+        "filename": "src/Client.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2018-12-11T18:55:04Z",
+      "side": 1,
+      "message": "Not sure if the library implements it under the hood. Could not find any specific reference about timeouts on RFC6455, but have seem some code using a function to keep the connection. Also, sections 5.5.2 and 5.5.3 on RFC define that Ping and Pong dataframes may be used as heartbeats, making it seem, IMO, as if we should verify the connection status and/or guarantee the connectivity.\n\nhttps://tools.ietf.org/html/rfc6455#section-5.5.2\n\nSome reference from the mozilla developers API:\nhttps://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings_and_Pongs_The_Heartbeat_of_WebSockets",
+      "parentUuid": "f8de13f1_37d41b82",
       "range": {
         "startLine": 23,
         "startChar": 7,
