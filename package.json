@@ -41,6 +41,7 @@
   "dependencies": {
     "eventemitter3": "^3.1.0",
     "isomorphic-ws": "^4.0.1",
+    "pre-commit": "^1.2.2",
     "ws": "^6.1.2"
   },
   "engines": {
@@ -51,5 +52,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "pre-commit": [
+    "lint"
   ]
 }
