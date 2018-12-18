@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e403d60d_8ddd0cc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "Say what you changed instead, e.g. \"Add x, y and z instructions to README\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc360a0a_5fb118e0",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "\u003chostname\u003e as it is the name of the variable.",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34236235_39beddda",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "\u003cport\u003e",
+      "range": {
+        "startLine": 15,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a940340_014d21b0",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "Use \u003cprotocol\u003e as it is selectable. It can be either ws or wss (secure web sockets).\n\nIf I\u0027m not wrong, to display \u003c and \u003e with markdown (GitHub\u0027s at least) you must use \u0026lt; and \u0026gt; respectively.",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77ea588_1ff539c4",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "@cesarbr/knot-cloud-websocket",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9367c5_62a4b8b1",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "Add a space between, as we do in our code.",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67cb83ba_db24964c",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "There is also the protocol variable. Add the default value and the fact that it \u0027wss\u0027 automatically selected when port is 443",
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f3f6ae_5be2150e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "register",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b474b4_72be869e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T17:06:11Z",
+      "side": 1,
+      "message": "Use a readable name to give the idea that it is a display name rather than an internal identifier, e.g. \u0027My KNoT Gateway\u0027",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "5e932f9c625f005d3efb85df741601b95e4491e7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
