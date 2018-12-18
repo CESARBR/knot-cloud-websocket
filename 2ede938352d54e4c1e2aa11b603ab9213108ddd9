@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07b700fd_afa9aabe",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 2615,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T14:29:09Z",
+      "side": 1,
+      "message": "This should come in a different patch, you are updating the package-lock.json without any changes to package.json",
+      "revId": "2ede938352d54e4c1e2aa11b603ab9213108ddd9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca2deb4_07ccfac8",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T14:29:09Z",
+      "side": 1,
+      "message": "register",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "2ede938352d54e4c1e2aa11b603ab9213108ddd9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1323769_3f09c53f",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-18T14:29:09Z",
+      "side": 1,
+      "message": "register",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "2ede938352d54e4c1e2aa11b603ab9213108ddd9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
