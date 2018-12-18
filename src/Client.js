@@ -41,6 +41,10 @@ class Client extends EventEmitter {
     this.sendFrame('identity', credentials);
   }
 
+  register(properties) {
+    this.sendFrame('register', properties);
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
