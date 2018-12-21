@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecd48710_1ab78fa7",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-21T20:18:39Z",
+      "side": 1,
+      "message": "Mark it as code (using ``) and put it between single quotes (\u0027\u0027) to emphasize it is a possible value.",
+      "range": {
+        "startLine": 49,
+        "startChar": 31,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "fef4b54d631c754d98009768f09f21dd94283606",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b9339b_6497d4d9",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2018-12-21T20:18:39Z",
+      "side": 1,
+      "message": "Add a `,` after 433 and be explicit that the protocol is changed, otherwise the user might not understand what is wss. Also add the styling cited above to wss.",
+      "range": {
+        "startLine": 51,
+        "startChar": 73,
+        "endLine": 51,
+        "endChar": 83
+      },
+      "revId": "fef4b54d631c754d98009768f09f21dd94283606",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
