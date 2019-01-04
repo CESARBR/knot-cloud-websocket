@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1c697f_f8ce549a",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-04T14:39:50Z",
+      "side": 1,
+      "message": "Here you specify the method and its `option` parameter. On the contrary, the register method is specified, below, without parameters.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "04ea1f7e905071d13c930220a54716bf2aa897cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d4c85b_36317227",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-04T14:39:50Z",
+      "side": 1,
+      "message": "Here.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "04ea1f7e905071d13c930220a54716bf2aa897cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
