@@ -53,6 +53,10 @@ class Client extends EventEmitter {
     this.sendFrame('devices', { query });
   }
 
+  unregister(id) {
+    this.sendFrame('unregister', { id });
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
