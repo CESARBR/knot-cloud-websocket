@@ -261,3 +261,37 @@ main();
 //    id: '7e133545550e496a',
 //    schema: [ [Object], [Object] ] } ]
 ```
+
+### unregister(id): &lt;Void&gt;
+
+Remove a device from the cloud. When successful emits a `unregistered` message.
+
+#### Arguments
+
+`id` **String** device ID (KNoT ID).
+
+#### Example
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.unregister('7e133545550e496a');
+  });
+  client.on('unregistered', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
