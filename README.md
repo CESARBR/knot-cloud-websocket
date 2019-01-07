@@ -177,3 +177,44 @@ main();
 //   uuid: '871a6907-45c0-4557-b783-6224f3de92e7',
 //   token: '8df7ed3c29738e9bf70bdf30e6c3abfa3cb10f05' }
 ```
+
+### updateMetadata(id, metadata): &lt;Void&gt;
+
+'Update the device metadata. When successful emits a `updated` message.
+
+#### Arguments
+
+- `id` **String** device ID (KNoT ID).
+- `metadata` **Any** device metadata.
+
+#### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.updateMetadata('7e133545550e496a', {
+      room: {
+        name: 'Lula Cardoso Ayres',
+        location: 'Tiradentes'
+      }
+    });
+  });
+  client.on('updated', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
