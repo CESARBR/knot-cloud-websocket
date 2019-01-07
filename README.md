@@ -218,3 +218,77 @@ async function main() {
 }
 main();
 ```
+
+### getDevices(query): &lt;Void&gt;
+
+Gets the devices registered on cloud. If a `query` is specified, only the devices with that property will be filtered. When successful emits a `devices` message.
+
+#### Arguments
+
+`query` **Object** data contained in device
+
+#### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.getDevices({
+      type: 'gateway'
+    });
+  });
+  client.on('devices', (devices) => {
+    console.log(devices);
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+// [{ "online": false,
+//     "type": "gateway",
+//     "metadata": {
+//       "name": "Raspberry"
+//     },
+//     "knot": {
+//       "user": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d",
+//       "router": "8272bcad-55fd-44d9-bd21-d43eaaf01e3a",
+//       "active": false
+//     },
+//     "meshblu": {
+//       "version": "2.0.0",
+//       "whitelists": {
+//         "discover": {
+//           "view": [
+//             {
+//               "uuid": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d"
+//             }
+//           ]
+//         },
+//         "configure": {
+//           "update": [
+//             {
+//               "uuid": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d"
+//             }
+//           ]
+//         }
+//       },
+//       "createdAt": "2019-01-10T11:35:17.584Z",
+//       "hash": "ACj+0Dge+HzZCC2D87YHHya6VXr9VdF6KT60gvM0tZ4=",
+//       "updatedAt": "2019-01-11T13:46:45.694Z",
+//       "updatedBy": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d"
+//     },
+//     "uuid": "edbc028a-f8e9-4804-93f7-92c8cc66f3aa",
+//     "token": "$2a$08$qEeRk.KBRNaWAUmV1tG5xehbwPXVyy1Y0Wuna6n.5rpsIyj9ssXN6"
+// }]
+```
