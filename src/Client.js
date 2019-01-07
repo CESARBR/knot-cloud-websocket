@@ -49,6 +49,10 @@ class Client extends EventEmitter {
     this.sendFrame('metadata', { id, metadata });
   }
 
+  getDevices(query) {
+    this.sendFrame('devices', { query });
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
