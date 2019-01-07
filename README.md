@@ -295,3 +295,51 @@ async function main() {
 }
 main();
 ```
+
+### updateSchema(schema): &lt;Void&gt;
+
+Sends a KNoT schema to a device associated to the connection. When successful emits a `updated` message.
+
+#### Arguments
+
+- `schema` **Array** a set of properties (associated to KNoT semantic) with details about sensors/actuators.
+  * `sensor_id` **Number** a sensor id between 0 and 255.
+  * `value_type` **Number** sensor type.
+  * `unit` **Number** sensor unit based.
+  * `name` **String** sensor name.
+
+#### Example
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  uuid: '97159106-41ca-4022-95e8-2511695ce64c',
+  token: 'g4265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.updateSchema([
+      { "sensor_id": 251, "value_type": 02,
+      "unit": 1, "type_id": 13, "name":
+      "Tank Volume" },
+      { "sensor_id": 252, "value_type": 1,
+      "unit": 1 ,"type_id": 5, "name":
+      "Outdoor Temperature" },
+      { "sensor_id": 253, "value_type": 3,
+      "unit": 0, "type_id": 65521, "name":
+      "Lamp Status" }
+    ]);
+  });
+  client.on('updated', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
