@@ -22,6 +22,30 @@
       "revId": "69c8c936fe0d7905ada8faea87c7e65c0025aefc",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5e5bd0a_cbd9a9cd",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-01-08T11:23:00Z",
+      "side": 1,
+      "message": "If we put on this way `{ query }` we don\u0027t need to request to user to pass a object like that: `this.getDevices({query: {type: \u0027gateway\u0027}})`\n\nWith my approach the request will be made like that: `this.getDevices({type: \u0027gateway\u0027})`",
+      "parentUuid": "ac9f5e3f_f65d330b",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "69c8c936fe0d7905ada8faea87c7e65c0025aefc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
