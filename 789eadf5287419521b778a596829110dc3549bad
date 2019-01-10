@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "335cca95_ba46911e",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-10T19:44:32Z",
+      "side": 1,
+      "message": "Could be just \u0027Remove a device from the cloud\u0027 because the method signature is already descriptive.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 41
+      },
+      "revId": "789eadf5287419521b778a596829110dc3549bad",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838018d4_7b2f1be7",
+        "filename": "src/Client.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-10T19:44:32Z",
+      "side": 1,
+      "message": "After the alias patch, the adapter will be waiting for a `id` property that represents KNoT ID and UUID(GUID) at same time.",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "789eadf5287419521b778a596829110dc3549bad",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
