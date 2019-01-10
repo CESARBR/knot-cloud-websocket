@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d504bf8c_2758fc91",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-10T19:26:01Z",
+      "side": 1,
+      "message": "I think you can say that these properties are part of the KNoT semantic model, which are located in the KNoT protocol repository (they aren\u0027t the same thing).\nPs: Put this in just one place to avoid repeated references to the \u0027KNoT protocol\u0027.",
+      "range": {
+        "startLine": 291,
+        "startChar": 49,
+        "endLine": 291,
+        "endChar": 62
+      },
+      "revId": "4b62a0d74a4a7c36893e967caa00e34085237eed",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094cfebf_83eff522",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-10T19:26:01Z",
+      "side": 1,
+      "message": "You could use the same `uuid` and `token` that Paulo is using in his examples, in order to keep a pattern. What do you think?",
+      "range": {
+        "startLine": 300,
+        "startChar": 13,
+        "endLine": 302,
+        "endChar": 52
+      },
+      "revId": "4b62a0d74a4a7c36893e967caa00e34085237eed",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
