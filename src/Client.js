@@ -61,6 +61,10 @@ class Client extends EventEmitter {
     this.sendFrame('schema', { schema });
   }
 
+  createSessionToken(id) {
+    this.sendFrame('createToken', { id });
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
