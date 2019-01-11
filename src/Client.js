@@ -57,6 +57,10 @@ class Client extends EventEmitter {
     this.sendFrame('unregister', { uuid });
   }
 
+  createSessionToken(uuid) {
+    this.sendFrame('token', { uuid });
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
