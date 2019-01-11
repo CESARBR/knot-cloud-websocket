@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2604f8fa_b666de99",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-01-11T18:54:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d504bf8c_2758fc91",
+      "range": {
+        "startLine": 291,
+        "startChar": 49,
+        "endLine": 291,
+        "endChar": 62
+      },
+      "revId": "4b62a0d74a4a7c36893e967caa00e34085237eed",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "094cfebf_83eff522",
         "filename": "README.md",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-10T19:26:01Z",
       "side": 1,
       "message": "You could use the same `uuid` and `token` that Paulo is using in his examples, in order to keep a pattern. What do you think?",
+      "range": {
+        "startLine": 300,
+        "startChar": 13,
+        "endLine": 302,
+        "endChar": 52
+      },
+      "revId": "4b62a0d74a4a7c36893e967caa00e34085237eed",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb57332_9fa0458f",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-01-11T18:54:26Z",
+      "side": 1,
+      "message": "I\u0027ve changed the uuid and token to represent that now it\u0027s a thing and no more a user that it\u0027s sending schema. Do you think I should clarify it? If yes, how?",
+      "parentUuid": "094cfebf_83eff522",
       "range": {
         "startLine": 300,
         "startChar": 13,
