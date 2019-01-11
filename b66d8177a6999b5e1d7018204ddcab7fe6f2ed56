@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bcfbdf2_97ff6801",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-11T22:52:31Z",
+      "side": 1,
+      "message": "Does not this returns the new token and should be logged? If so, please add the console.log() and the comment showing the expected response.",
+      "range": {
+        "startLine": 369,
+        "startChar": 3,
+        "endLine": 369,
+        "endChar": 50
+      },
+      "revId": "b66d8177a6999b5e1d7018204ddcab7fe6f2ed56",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
