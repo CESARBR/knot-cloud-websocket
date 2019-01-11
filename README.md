@@ -326,3 +326,41 @@ async function main() {
 }
 main();
 ```
+
+### createSessionToken(id): &lt;Void&gt;
+
+Create a session token to device on cloud. When successful emits a `created` message.
+
+#### Arguments
+
+`id` **String** Device ID (KNoT ID).
+
+#### Example
+
+#### Example
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.createSessionToken('7e133545550e496a');
+  });
+  client.on('created', (token) => {
+    console.log(token);
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+// "a0ab6f486633ddc87dceecc98e88d7ffee60a402"
+```
