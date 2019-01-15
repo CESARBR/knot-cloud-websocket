@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7db832_7cc34113",
+        "filename": "src/Client.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-15T11:24:06Z",
+      "side": 1,
+      "message": "Change to \u0027token\u0027 if you agree with my suggestion on adapter patch:\nhttps://review.gerrithub.io/c/CESARBR/knot-cloud-protocol-adapter-websocket/+/440082/2/src/server/ConnectionHandler.js#22",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "7e8d82d00d3db08139c81061adaa007428b9065e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
