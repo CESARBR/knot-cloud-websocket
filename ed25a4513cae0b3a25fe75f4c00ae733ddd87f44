@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09471520_7db56f78",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-15T15:51:04Z",
+      "side": 1,
+      "message": "I think we don\u0027t handle sensor_id \u003d 0.",
+      "range": {
+        "startLine": 306,
+        "startChar": 47,
+        "endLine": 306,
+        "endChar": 49
+      },
+      "revId": "ed25a4513cae0b3a25fe75f4c00ae733ddd87f44",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
