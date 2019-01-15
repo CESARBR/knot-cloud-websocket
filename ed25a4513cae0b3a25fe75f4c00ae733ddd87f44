@@ -128,6 +128,30 @@
       "revId": "ed25a4513cae0b3a25fe75f4c00ae733ddd87f44",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6051b98_2df94ed0",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-15T20:53:52Z",
+      "side": 1,
+      "message": "But since we do not support for the older version, at least for now I don\u0027t think we should allow (or at least advise the user to use) IDs lower than 1.\nLet\u0027s check with embedded team to figure out the best approach.",
+      "parentUuid": "ee15197b_7fd92644",
+      "range": {
+        "startLine": 306,
+        "startChar": 47,
+        "endLine": 306,
+        "endChar": 49
+      },
+      "revId": "ed25a4513cae0b3a25fe75f4c00ae733ddd87f44",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
