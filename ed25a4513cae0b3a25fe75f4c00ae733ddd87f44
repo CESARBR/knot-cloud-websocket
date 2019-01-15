@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "dea6b643_1e1f2002",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-15T17:03:05Z",
+      "side": 1,
+      "message": "Perhaps it would be better to be more explicit about the schema being a \"thing only action\" and explain a little more.",
+      "revId": "ed25a4513cae0b3a25fe75f4c00ae733ddd87f44",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b990dca_bcbce7fa",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-15T17:03:05Z",
+      "side": 1,
+      "message": "KNoT Thing",
+      "range": {
+        "startLine": 301,
+        "startChar": 25,
+        "endLine": 301,
+        "endChar": 31
+      },
+      "revId": "ed25a4513cae0b3a25fe75f4c00ae733ddd87f44",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09471520_7db56f78",
         "filename": "README.md",
         "patchSetId": 4
