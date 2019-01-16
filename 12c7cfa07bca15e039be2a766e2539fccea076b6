@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4f571e_c3d8461e",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-16T13:08:44Z",
+      "side": 1,
+      "message": "uuid",
+      "range": {
+        "startLine": 330,
+        "startChar": 23,
+        "endLine": 330,
+        "endChar": 25
+      },
+      "revId": "12c7cfa07bca15e039be2a766e2539fccea076b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe29e0e5_4b6d1112",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-16T13:08:44Z",
+      "side": 1,
+      "message": "UUID",
+      "range": {
+        "startLine": 336,
+        "startChar": 23,
+        "endLine": 336,
+        "endChar": 25
+      },
+      "revId": "12c7cfa07bca15e039be2a766e2539fccea076b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e293365f_a3393389",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-16T13:08:44Z",
+      "side": 1,
+      "message": "As we have discussed today, KNoT ID isn\u0027t used yet, just when alias patch is merged.",
+      "range": {
+        "startLine": 352,
+        "startChar": 31,
+        "endLine": 352,
+        "endChar": 47
+      },
+      "revId": "12c7cfa07bca15e039be2a766e2539fccea076b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
