@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "348a8138_d4a5cbe6",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-16T18:14:58Z",
+      "side": 1,
+      "message": "device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or apps).\n\nI think we should be a little more explicit to ease understanding. Something like the message above. Perhaps we could ask someone that is not developing the feature if they would like to see more info or that\u0027s enough.",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "ea3d796f900d067a66c1eda4a21bb29e4793dd4f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
