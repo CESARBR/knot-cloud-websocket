@@ -184,8 +184,8 @@ Update the device metadata. When successful emits a `updated` message.
 
 #### Arguments
 
-- `id` **String** device ID (KNoT ID).
-- `metadata` **Any** device metadata.
+- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `metadata` **Any** Device metadata.
 
 #### Example
 
@@ -225,7 +225,7 @@ Gets the devices registered on cloud. If a `query` is specified, only the device
 
 #### Arguments
 
-`query` **Object** data contained in device
+`query` **Object** Data contained in device.
 
 #### Example
 
@@ -299,7 +299,7 @@ Remove a device from the cloud. When successful emits a `unregistered` message.
 
 #### Arguments
 
-`id` **String** device ID (KNoT ID).
+`id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
 
 #### Example
 ```javascript
@@ -333,7 +333,7 @@ Create a session token to device on cloud. When successful emits a `created` mes
 
 #### Arguments
 
-`id` **String** Device ID (KNoT ID).
+`id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
 
 #### Example
 
@@ -371,11 +371,11 @@ Sends a KNoT schema to a KNoT Thing(devices with `type: 'thing'`) associated to 
 
 #### Arguments
 
-- `schema` **Array** a set of properties (associated to KNoT semantic) with details about sensors/actuators.
-  * `sensor_id` **Number** a sensor id between 0 and the maximum number of sensors defined for that thing.
-  * `value_type` **Number** sensor type.
-  * `unit` **Number** sensor unit based.
-  * `name` **String** sensor name.
+- `schema` **Array** Set of properties (associated to KNoT semantic) with details about sensors/actuators.
+  * `sensor_id` **Number** Sensor id between 0 and the maximum number of sensors defined for that KNoT Thing.
+  * `value_type` **Number** Sensor type.
+  * `unit` **Number** Sensor unit based.
+  * `name` **String** Sensor name.
 
 #### Example
 ```javascript
