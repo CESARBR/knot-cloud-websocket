@@ -7,7 +7,7 @@ A client side library that provides websocket abstraction to the KNoT Cloud for 
 ## Install
 
 ```console
-npm install --save file:path/to/knot-cloud-websocket
+npm install --save @cesarbr/knot-cloud-websocket
 ```
 
 ## Quickstart
