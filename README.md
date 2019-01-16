@@ -184,7 +184,7 @@ Update the device metadata. When successful emits a `updated` message.
 
 #### Arguments
 
-- `id` **String** device ID (KNoT ID).
+- `id` **String** device ID (KNoT ID/UUID).
 - `metadata` **Any** device metadata.
 
 #### Example
@@ -299,7 +299,7 @@ Remove a device from the cloud. When successful emits a `unregistered` message.
 
 #### Arguments
 
-`id` **String** device ID (KNoT ID).
+`id` **String** device ID (KNoT ID/UUID).
 
 #### Example
 ```javascript
@@ -333,7 +333,7 @@ Create a session token to device on cloud. When successful emits a `created` mes
 
 #### Arguments
 
-`id` **String** Device ID (KNoT ID).
+`id` **String** Device ID (KNoT ID/UUID).
 
 #### Example
 
