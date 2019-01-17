@@ -53,20 +53,20 @@ class Client extends EventEmitter {
     this.sendFrame('devices', { query });
   }
 
-  unregister(uuid) {
-    this.sendFrame('unregister', { uuid });
+  unregister(id) {
+    this.sendFrame('unregister', { id });
   }
 
-  createSessionToken(uuid) {
-    this.sendFrame('token', { uuid });
+  createSessionToken(id) {
+    this.sendFrame('token', { id });
   }
 
   updateSchema(schema) {
     this.sendFrame('schema', { schema });
   }
 
-  activate(uuid) {
-    this.sendFrame('activate', { uuid });
+  activate(id) {
+    this.sendFrame('activate', { id });
   }
 
   onMessage(event) {
@@ -112,7 +112,7 @@ class Client extends EventEmitter {
 
   getCrendentials() {
     return {
-      uuid: this.options.uuid,
+      id: this.options.id,
       token: this.options.token,
     };
   }
