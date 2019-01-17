@@ -65,6 +65,10 @@ class Client extends EventEmitter {
     this.sendFrame('schema', { schema });
   }
 
+  activate(uuid) {
+    this.sendFrame('activate', { uuid });
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
