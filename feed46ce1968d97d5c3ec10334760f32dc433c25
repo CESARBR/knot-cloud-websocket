@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0b3efe19_62054d12",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-23T13:19:11Z",
+      "side": 1,
+      "message": "uuid",
+      "range": {
+        "startLine": 416,
+        "startChar": 20,
+        "endLine": 416,
+        "endChar": 23
+      },
+      "revId": "feed46ce1968d97d5c3ec10334760f32dc433c25",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73805760_65e7f437",
         "filename": "README.md",
         "patchSetId": 1
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "75d2a967_1bcf25fd",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-23T13:19:11Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "73805760_65e7f437",
+      "revId": "feed46ce1968d97d5c3ec10334760f32dc433c25",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a90494b5_746a26e5",
         "filename": "src/Client.js",
         "patchSetId": 1
@@ -30,6 +71,30 @@
       "writtenOn": "2019-01-23T13:03:01Z",
       "side": 1,
       "message": "activate",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "feed46ce1968d97d5c3ec10334760f32dc433c25",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e308b5b_113dd070",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-01-23T13:19:11Z",
+      "side": 1,
+      "message": "I think if the method is only for the gateway devices, `activateGateway` would be more suitable. \n\nThis decision depends on the adapter patch.\nhttps://review.gerrithub.io/c/CESARBR/knot-cloud-protocol-adapter-websocket/+/441412/1/src/interactors/ActivateGateway.js",
+      "parentUuid": "a90494b5_746a26e5",
       "range": {
         "startLine": 68,
         "startChar": 2,
