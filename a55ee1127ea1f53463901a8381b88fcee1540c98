@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab25b9e_75f51fcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-24T17:37:35Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "a55ee1127ea1f53463901a8381b88fcee1540c98",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7f043a_4e92d6ff",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1015148
+      },
+      "writtenOn": "2019-01-24T17:37:35Z",
+      "side": 1,
+      "message": "Since the operation is for any device, should follow the pattern of other methods.",
+      "range": {
+        "startLine": 422,
+        "startChar": 3,
+        "endLine": 422,
+        "endChar": 32
+      },
+      "revId": "a55ee1127ea1f53463901a8381b88fcee1540c98",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
