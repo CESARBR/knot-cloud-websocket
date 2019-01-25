@@ -1,6 +1,6 @@
 {
   "name": "@cesarbr/knot-cloud-websocket",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "KNoT Cloud WebSocket library for NodeJS and browser",
   "contributors": [
     "Thiago Cardoso <thiago.figuerdo@cesar.org.br>",
