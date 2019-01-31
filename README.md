@@ -19,7 +19,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -45,13 +45,13 @@ main();
 Create a client object that will connect to a KNoT Cloud protocol adapter instance.
 
 #### Arguments
-`options`: {
-  `protocol` **String** Either `'ws'` or `'wss'`. Defaults to `'ws'`.
-  `hostname` **String** KNoT Cloud protocol adapter instance host name.
-  `port` **Number** KNoT Cloud protocol adapter instance port. When port is 433, protocol is automatically changed to `'wss'`.
-  `uuid` **String** User UUID.
-  `token` **String** User token.
-}
+- `options` **Object** JSON object with connection details
+  * `protocol` **String** Either `'ws'` or `'wss'`. Defaults to `'ws'`.
+  * `hostname` **String** KNoT Cloud protocol adapter instance host name.
+  * `port` **Number** KNoT Cloud protocol adapter instance port. When port is 433, protocol is automatically changed to `'wss'`.
+  * `id` **String**  Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways, Apps or Users).
+  * `token` **String** User token.
+
 #### Example
 
 ```javascript
@@ -59,7 +59,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 ```
@@ -75,7 +75,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -103,7 +103,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -126,10 +126,12 @@ main();
 Registers a new device on the KNoT Cloud. When the register is successfull, emits a `'registered'` message.
 
 #### Arguments
-`properties`: {
-  `type` **String** Required. Either `'gateway'` or `'app'`.
-  `name` **String** Human readable name for your device.
-}
+- `properties` **Object** JSON object with device details
+  * `type` **String** Required. Either `'gateway'` or `'app'`.
+  * `name` **String** Human readable name for your device.
+
+#### Result
+- `device` **Object** JSON object containing device details after creation on cloud.
 
 #### Example
 
@@ -138,7 +140,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -194,7 +196,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -225,7 +227,10 @@ Gets the devices registered on cloud. If a `query` is specified, only the device
 
 #### Arguments
 
-`query` **Object** Data contained in device.
+- `query` **Object** Data contained in device.
+
+#### Result
+- `devices` **Array** Set of devices that match the constraint specified on `query`.
 
 #### Example
 
@@ -234,7 +239,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -299,7 +304,7 @@ Remove a device from the cloud. When successful emits a `unregistered` message.
 
 #### Arguments
 
-`id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
 
 #### Example
 ```javascript
@@ -307,7 +312,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -333,9 +338,10 @@ Create a session token to device on cloud. When successful emits a `created` mes
 
 #### Arguments
 
-`id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
 
-#### Example
+#### Result
+- `token` **String** New token for the specified device.
 
 #### Example
 ```javascript
@@ -343,7 +349,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -383,7 +389,7 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '97159106-41ca-4022-95e8-2511695ce64c',
+  id: '97159106-41ca-4022-95e8-2511695ce64c',
   token: 'g4265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
@@ -413,13 +419,13 @@ async function main() {
 main();
 ```
 
-### activate(uuid): &lt;Void&gt;
+### activate(id): &lt;Void&gt;
 
 Sets the `active` KNoT property of the device on the cloud. When successful emits a `activated` message.
 
 #### Arguments
 
-- `uuid` **String** Device UUID
+- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
 
 #### Example
 ```javascript
@@ -427,13 +433,13 @@ const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
-  uuid: '78159106-41ca-4022-95e8-2511695ce64c',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
 async function main() {
   client.on('ready', () => {
-    client.activate('78159106-41ca-4022-95e8-2511695c0000');
+    client.activate('871a6907-45c0-4557-b783-6224f3de92e7');
   });
   client.on('activated', () => {
     client.close();
