@@ -73,6 +73,10 @@ class Client extends EventEmitter {
     this.sendFrame('data', { sensorId, value });
   }
 
+  setData(id, data) {
+    this.sendFrame('setData', { id, data });
+  }
+
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
