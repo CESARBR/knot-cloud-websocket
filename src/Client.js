@@ -69,6 +69,10 @@ class Client extends EventEmitter {
     this.sendFrame('activate', { id });
   }
 
+  getData(id, sensorIds) {
+    this.sendFrame('getData', { id, sensorIds });
+  }
+
   setData(id, data) {
     this.sendFrame('setData', { id, data });
   }
