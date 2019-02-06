@@ -298,6 +298,43 @@ main();
 // }]
 ```
 
+### getData(id, sensorIds): &lt;Void&gt;
+
+Send a `get_data` command with sensor ids to request data from sensors. When successful emits a `sent` message.
+
+#### Arguments
+
+- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `sensorIds` **Array** Sensor IDs to be sent, each one formed by:
+  * `sensorId` **Number** sensor ID.
+
+#### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.getData('7e133545550e496a', [1, 2]);
+  });
+  client.on('sent', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
+
 ### setData(id, data): &lt;Void&gt;
 
 Send a `set_data` command with values to be set to sensors. When successful emits a `sent` message.
