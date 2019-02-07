@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0a5594_c05d8c7a",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-02-07T13:50:36Z",
+      "side": 1,
+      "message": "Make clear that the string must in base-64\n\nSee the README from knot-lib-node:\nhttps://github.com/CESARBR/knot-lib-node#setdataid-data-promisevoid",
+      "range": {
+        "startLine": 310,
+        "startChar": 14,
+        "endLine": 310,
+        "endChar": 20
+      },
+      "revId": "9088b2ee33a36dd3ddd87a7c87dc3135e55112fe",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
