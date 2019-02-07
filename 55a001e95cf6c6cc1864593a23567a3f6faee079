@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "588ddcf6_47774a40",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-02-07T13:47:58Z",
+      "side": 1,
+      "message": "See my comments in the next file",
+      "range": {
+        "startLine": 301,
+        "startChar": 4,
+        "endLine": 301,
+        "endChar": 11
+      },
+      "revId": "55a001e95cf6c6cc1864593a23567a3f6faee079",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101b31f3_638ccdd9",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-02-07T13:47:58Z",
+      "side": 1,
+      "message": "I prefer \u0027got\u0027\nor \u0027got-data\u0027",
+      "range": {
+        "startLine": 326,
+        "startChar": 13,
+        "endLine": 326,
+        "endChar": 17
+      },
+      "revId": "55a001e95cf6c6cc1864593a23567a3f6faee079",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16bf686_04c37c12",
+        "filename": "src/Client.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1013096
+      },
+      "writtenOn": "2019-02-07T13:47:58Z",
+      "side": 1,
+      "message": "I thought that this command would change to requestData or pullData.\nAnd the command getData will come with the real data",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "55a001e95cf6c6cc1864593a23567a3f6faee079",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
