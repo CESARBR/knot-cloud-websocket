@@ -50,6 +50,7 @@ Create a client object that will connect to a KNoT Cloud protocol adapter instan
   * `hostname` **String** KNoT Cloud protocol adapter instance host name.
   * `port` **Number** KNoT Cloud protocol adapter instance port. When port is 433, protocol is automatically changed to `'wss'`.
   * `id` **String**  Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways, Apps or Users).
+  * `uuid` **String** (Deprecated) Same as `id`.
   * `token` **String** User token.
 
 #### Example
