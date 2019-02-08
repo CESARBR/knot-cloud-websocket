@@ -374,12 +374,12 @@ main();
 
 ### updateSchema(schema): &lt;Void&gt;
 
-Sends a KNoT schema to a KNoT Thing(devices with `type: 'thing'`) associated to the connection. When successful emits a `updated` message.
+Sends a KNoT schema as a thing associated to the connection. When successful emits a `updated` message.
 
 #### Arguments
 
 - `schema` **Array** Set of properties (associated to KNoT semantic) with details about sensors/actuators.
-  * `sensor_id` **Number** Sensor id between 0 and the maximum number of sensors defined for that KNoT Thing.
+  * `sensor_id` **Number** Sensor id between 0 and the maximum number of sensors defined for that thing.
   * `value_type` **Number** Sensor type.
   * `unit` **Number** Sensor unit based.
   * `name` **String** Sensor name.
