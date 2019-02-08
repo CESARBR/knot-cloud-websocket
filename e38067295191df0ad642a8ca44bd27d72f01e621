@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe6c6ec_26ce107f",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-02-08T20:11:24Z",
+      "side": 1,
+      "message": "This is an implementation detail. You can say that it requests the thing to update its data item with the value that is being sent.",
+      "range": {
+        "startLine": 303,
+        "startChar": 7,
+        "endLine": 303,
+        "endChar": 25
+      },
+      "revId": "e38067295191df0ad642a8ca44bd27d72f01e621",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cfae475_798b829d",
+        "filename": "src/Client.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-02-08T20:11:24Z",
+      "side": 1,
+      "message": "camelCase",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e38067295191df0ad642a8ca44bd27d72f01e621",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
