@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c29557f_62bfd63f",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-02-08T20:12:33Z",
+      "side": 1,
+      "message": "Same as with setData, this is an implementation detail.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 25
+      },
+      "revId": "89735cd452b7347e34a3f71864be158ea904719a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a231c4fa_8c8c3785",
+        "filename": "src/Client.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-02-08T20:12:33Z",
+      "side": 1,
+      "message": "camelCase",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "89735cd452b7347e34a3f71864be158ea904719a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
