@@ -453,3 +453,38 @@ async function main() {
 }
 main();
 ```
+
+### publishData(sensorId, value): &lt;Void&gt;
+
+Sends a data as a thing associated to the connection. When successful emits a `published` message.
+
+#### Arguments
+
+- `sensor_id` **Number** Sensor id between 0 and the maximum number of sensors defined for that thing.
+- `value` **Number** Sensor type.
+
+#### Example
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  id: '97159106-41ca-4022-95e8-2511695ce64c',
+  token: 'g4265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.publishData(253, true);
+  });
+  client.on('published', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
