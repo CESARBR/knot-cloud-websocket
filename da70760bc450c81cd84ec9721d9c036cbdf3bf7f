@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1827b3cf_51af66a7",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-02-08T20:09:57Z",
+      "side": 1,
+      "message": "It doesn\u0027t sends data to a thing, sends data as thing. You can emit KNoT in KNoT Thing (can be simply \"thing\")",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 87
+      },
+      "revId": "da70760bc450c81cd84ec9721d9c036cbdf3bf7f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a00811f_6a0a3f3f",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-02-08T20:09:57Z",
+      "side": 1,
+      "message": "data",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "da70760bc450c81cd84ec9721d9c036cbdf3bf7f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
