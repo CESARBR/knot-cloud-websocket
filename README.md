@@ -447,6 +447,43 @@ main();
 // "a0ab6f486633ddc87dceecc98e88d7ffee60a402"
 ```
 
+### revokeSessionToken(id, token): &lt;Void&gt;
+
+Revoke a device session token. When successful emits a `revoked` message.
+
+#### Arguments
+
+- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `token` **String** Existing session token for the specified device.
+
+#### Example
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.revokeSessionToken('78159106-41ca-4022-95e8-2511695ce64c' 'e22dfa8d43ca0caf356f1a4930b638f2d1d98322');
+  });
+  client.on('revoked', (token) => {
+    console.log(token);
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.log(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+// "a0ab6f486633ddc87dceecc98e88d7ffee60a402"
+```
+
 ### updateSchema(schema): &lt;Void&gt;
 
 Sends a KNoT schema as a thing associated to the connection. When successful emits a `updated` message.

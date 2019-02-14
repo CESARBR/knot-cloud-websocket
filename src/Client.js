@@ -61,6 +61,10 @@ class Client extends EventEmitter {
     this.sendFrame('token', { id });
   }
 
+  revokeSessionToken(id, token) {
+    this.sendFrame('revoke', { id, token });
+  }
+
   updateSchema(schema) {
     this.sendFrame('schema', { schema });
   }
