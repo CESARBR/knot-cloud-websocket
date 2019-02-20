@@ -1,6 +1,6 @@
 # KNoT Cloud WebSocket library for NodeJS and browser
 
-A client side library that provides websocket abstraction to the KNoT Cloud for Node.js and browser applications.
+A client side library that provides a WebSocket abstraction to the KNoT Cloud for Node.js and browser applications.
 
 # Getting started
 
@@ -12,7 +12,7 @@ npm install --save @cesarbr/knot-cloud-websocket
 
 ## Quickstart
 
-`KNoTCloudWebSocket` connects to &lt;protocol&gt;://&lt;hostname&gt;:&lt;port&gt; using the UUID and token as credentials, respectively. Replace this address with your protocol adapter instance and the credentials with valid ones.
+`KNoTCloudWebSocket` connects to &lt;protocol&gt;://&lt;hostname&gt;:&lt;port&gt; using ID and token as credentials. Replace this address with your protocol adapter instance and the credentials with valid ones.
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -28,7 +28,7 @@ async function main() {
     await client.connect();
     await client.register({
       type: 'gateway',
-      name: 'my KNoT Gateway'
+      name: 'My KNoT Gateway'
     });
   } catch (err) {
     console.error(err);
@@ -45,13 +45,13 @@ main();
 Create a client object that will connect to a KNoT Cloud protocol adapter instance.
 
 #### Arguments
-- `options` **Object** JSON object with connection details
-  * `protocol` **String** Either `'ws'` or `'wss'`. Defaults to `'ws'`.
+- `options` **Object** JSON object with connection details.
+  * `protocol` **String** (Optional) Either `'ws'` or `'wss'`. Default: `'ws'`.
   * `hostname` **String** KNoT Cloud protocol adapter instance host name.
   * `port` **Number** KNoT Cloud protocol adapter instance port. When port is 433, protocol is automatically changed to `'wss'`.
-  * `id` **String**  Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways, Apps or Users).
+  * `id` **String**  Device ID.
   * `uuid` **String** (Deprecated) Same as `id`.
-  * `token` **String** User token.
+  * `token` **String** Device token.
 
 #### Example
 
@@ -67,7 +67,7 @@ const client = new KNoTCloudWebSocket({
 
 ### connect(): &lt;Void&gt;
 
-Connects to the KNoT Cloud protocol adapter instance. Emits  a `'ready'` message when the connection is successfull and `'error'` if a connection issue occurs.
+Connects to the protocol adapter instance. Receives the `'ready'` message when succeeds and `'error'` otherwise.
 
 #### Example
 
@@ -84,8 +84,8 @@ async function main() {
   client.on('ready', () => {
     console.log('Connection established');
   });
-  client.on('error', () => {
-    console.log(err);
+  client.on('error', (err) => {
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -113,8 +113,8 @@ async function main() {
     console.log('Connection established');
     client.close();
   });
-  client.on('error', () => {
-    console.log(err);
+  client.on('error', (err) => {
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -124,12 +124,12 @@ main();
 
 ### register(properties): &lt;Void&gt;
 
-Registers a new device on the KNoT Cloud. When the register is successfull, emits a `'registered'` message.
+Registers a new device. Receives the `'registered'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 - `properties` **Object** JSON object with device details
-  * `type` **String** Required. Either `'gateway'` or `'app'`.
-  * `name` **String** Human readable name for your device.
+  * `type` **String** Either `'gateway'` or `'app'`.
+  * `name` **String** (Optional) Human readable name for your device.
 
 #### Result
 - `device` **Object** JSON object containing device details after creation on cloud.
@@ -157,7 +157,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -183,11 +183,11 @@ main();
 
 ### updateMetadata(id, metadata): &lt;Void&gt;
 
-Update the device metadata. When successful emits a `updated` message.
+Updates the device metadata. Receives the `'updated'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID.
 - `metadata` **Any** Device metadata.
 
 #### Example
@@ -214,7 +214,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -224,11 +224,11 @@ main();
 
 ### getDevices(query): &lt;Void&gt;
 
-Gets the devices registered on cloud. If a `query` is specified, only the devices with that property will be filtered. When successful emits a `devices` message.
+Lists the devices registered on cloud. If a `query` is specified, only the devices that match such query will be returned. Receives the `'devices'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `query` **Object** Data contained in device.
+- `query` **Object** (Optional) Search parameters.
 
 #### Result
 - `devices` **Array** Set of devices that match the constraint specified on `query`.
@@ -255,7 +255,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -301,13 +301,12 @@ main();
 
 ### getData(id, sensorIds): &lt;Void&gt;
 
-Request the thing to send its current data items values. When successful emits a `sent` message.
+Requests a thing to send its current data items values. Receives the `'sent'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
-- `sensorIds` **Array** Sensor IDs to be sent, each one formed by:
-  * `sensorId` **Number** sensor ID.
+- `id` **String** Device ID.
+- `sensorIds` **Array** Array of sensor IDs.
 
 #### Example
 
@@ -328,7 +327,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -338,14 +337,14 @@ main();
 
 ### setData(id, data): &lt;Void&gt;
 
-Request the thing to update its data items with the values that is being sent. When successful emits a `sent` message.
+Requests a thing to update its data items with the values passed as arguments. Receives the `'sent'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID.
 - `data` **Array** Data items to be sent, each one formed by:
-  * `sensorId` **Number** sensor ID.
-  * `value` **String|Boolean|Number** sensor value. Strings must be Base64 encoded.
+  * `sensorId` **Number** Sensor ID.
+  * `value` **String|Boolean|Number** Sensor value. Strings must be Base64 encoded.
 
 #### Example
 
@@ -366,7 +365,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -376,11 +375,11 @@ main();
 
 ### unregister(id): &lt;Void&gt;
 
-Remove a device from the cloud. When successful emits a `unregistered` message.
+Removes a device from the cloud. Receives the `'unregistered'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID.
 
 #### Example
 ```javascript
@@ -400,7 +399,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -410,11 +409,11 @@ main();
 
 ### createSessionToken(id): &lt;Void&gt;
 
-Create a session token to device on cloud. When successful emits a `created` message.
+Creates a session token for a device. Receives the `'created'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID.
 
 #### Result
 - `token` **String** New token for the specified device.
@@ -438,7 +437,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -449,11 +448,11 @@ main();
 
 ### revokeSessionToken(id, token): &lt;Void&gt;
 
-Revoke a device session token. When successful emits a `revoked` message.
+Revokes a device session token. Receives the `'revoked'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID.
 - `token` **String** Existing session token for the specified device.
 
 #### Example
@@ -475,7 +474,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -486,14 +485,14 @@ main();
 
 ### updateSchema(schema): &lt;Void&gt;
 
-Sends a KNoT schema as a thing associated to the connection. When successful emits a `updated` message.
+Updates the thing schema. Receives the `'updated'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `schema` **Array** Set of properties (associated to KNoT semantic) with details about sensors/actuators.
-  * `sensor_id` **Number** Sensor id between 0 and the maximum number of sensors defined for that thing.
+- `schema` **Array** An array of objects in the following format:
+  * `sensor_id` **Number** Sensor ID. Value between 0 and the maximum number of sensors defined for that thing.
   * `value_type` **Number** Sensor type.
-  * `unit` **Number** Sensor unit based.
+  * `unit` **Number** Sensor unit.
   * `name` **String** Sensor name.
 
 #### Example
@@ -524,7 +523,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -534,11 +533,11 @@ main();
 
 ### activate(id): &lt;Void&gt;
 
-Sets the `active` KNoT property of the device on the cloud. When successful emits a `activated` message.
+Activates a gateway. Receives the `'activated'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `id` **String** Device ID. Either the KNoT ID (for KNoT Things) or the meshblu assigned UUID (for KNoT Gateways and/or KNoT Apps).
+- `id` **String** Device ID.
 
 #### Example
 ```javascript
@@ -558,7 +557,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
@@ -568,12 +567,12 @@ main();
 
 ### publishData(sensorId, value): &lt;Void&gt;
 
-Sends a data as a thing associated to the connection. When successful emits a `published` message.
+Publishes data. Receives the `'published'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
-- `sensorId` **Number** Sensor id between 0 and the maximum number of sensors defined for that thing.
-- `value` **Number** Sensor type.
+- `sensorId` **Number** Sensor ID.
+- `value` **Number** Sensor value.
 
 #### Example
 ```javascript
@@ -593,7 +592,7 @@ async function main() {
     client.close();
   });
   client.on('error', (err) => {
-    console.log(err);
+    console.error(err);
     console.log('Connection refused');
   });
   client.connect();
