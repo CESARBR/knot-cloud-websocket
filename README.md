@@ -152,8 +152,8 @@ const client = new KNoTCloudWebSocket({
 async function main() {
   client.on('ready', () => {
     client.register({
-      type:'gateway',
-      name:'My KNoT Gateway'
+      type: 'gateway',
+      name: 'My KNoT Gateway'
     });
   });
   client.on('registered', (device) => {
@@ -167,22 +167,9 @@ async function main() {
   client.connect();
 }
 main();
-// { online: false,
-//   type: 'gateway',
+// { type: 'gateway',
 //   metadata: { name: 'My KNoT Gateway' },
-//   meshblu:
-//    { version: '2.0.0',
-//      whitelists:
-//       { discover:
-//          { as: [ { uuid: '78159106-41ca-4022-95e8-2511695ce64c' } ],
-//            view: [ { uuid: '78159106-41ca-4022-95e8-2511695ce64c' } ] },
-//         configure:
-//          { as: [ { uuid: '78159106-41ca-4022-95e8-2511695ce64c' } ],
-//            update: [ { uuid: '78159106-41ca-4022-95e8-2511695ce64c' } ] } },
-//      createdAt: '2019-01-08T13:01:41.278Z',
-//      hash: 'f3NlbFF9abnShDWXh5GfN7C2hnas5ElubSLCnDbNSaI=' },
-//   uuid: '871a6907-45c0-4557-b783-6224f3de92e7',
-//   token: '8df7ed3c29738e9bf70bdf30e6c3abfa3cb10f05' }
+//   knot: { id: '871a6907-45c0-4557-b783-6224f3de92e7', active: false } }
 ```
 
 ### updateMetadata(id, metadata): &lt;Void&gt;
@@ -265,42 +252,9 @@ async function main() {
   client.connect();
 }
 main();
-// [{ "online": false,
-//     "type": "gateway",
-//     "metadata": {
-//       "name": "Raspberry"
-//     },
-//     "knot": {
-//       "user": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d",
-//       "router": "8272bcad-55fd-44d9-bd21-d43eaaf01e3a",
-//       "active": false
-//     },
-//     "meshblu": {
-//       "version": "2.0.0",
-//       "whitelists": {
-//         "discover": {
-//           "view": [
-//             {
-//               "uuid": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d"
-//             }
-//           ]
-//         },
-//         "configure": {
-//           "update": [
-//             {
-//               "uuid": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d"
-//             }
-//           ]
-//         }
-//       },
-//       "createdAt": "2019-01-10T11:35:17.584Z",
-//       "hash": "ACj+0Dge+HzZCC2D87YHHya6VXr9VdF6KT60gvM0tZ4=",
-//       "updatedAt": "2019-01-11T13:46:45.694Z",
-//       "updatedBy": "d6d983d9-19df-495c-ab3f-09d6f5d62b6d"
-//     },
-//     "uuid": "edbc028a-f8e9-4804-93f7-92c8cc66f3aa",
-//     "token": "$2a$08$qEeRk.KBRNaWAUmV1tG5xehbwPXVyy1Y0Wuna6n.5rpsIyj9ssXN6"
-// }]
+// [ { type: 'gateway',
+//     metadata: { name: 'Raspberry' },
+//     knot: { id: 'edbc028a-f8e9-4804-93f7-92c8cc66f3aa', active: false } } ]
 ```
 
 ### getData(id, sensorIds): &lt;Void&gt;
@@ -447,7 +401,7 @@ async function main() {
   client.connect();
 }
 main();
-// "a0ab6f486633ddc87dceecc98e88d7ffee60a402"
+// 'a0ab6f486633ddc87dceecc98e88d7ffee60a402'
 ```
 
 ### revokeSessionToken(id, token): &lt;Void&gt;
