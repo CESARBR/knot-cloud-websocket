@@ -119,7 +119,7 @@ class Client extends EventEmitter {
     const urlOptions = {
       hostname: this.options.hostname,
       port: this.options.port,
-      pathname: '/ws',
+      pathname: this.options.pathname,
     };
     urlOptions.protocol = urlOptions.port === 443 ? 'wss' : this.options.protocol || 'ws';
 
