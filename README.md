@@ -126,10 +126,14 @@ main();
 
 Registers a new device. Receives the `'registered'` message when succeeds and `'error'` otherwise.
 
+Users can create `'gateway'`, `'app'` and `'thing'` and `'gateway'` can create `'thing'`.
+
 #### Arguments
 - `properties` **Object** JSON object with device details
-  * `type` **String** Either `'gateway'` or `'app'`.
+  * `type` **String** Device type. One of: `'gateway'`, `'app'` or `'thing'`.
   * `name` **String** (Optional) Human readable name for your device.
+  * `id` **String** Device ID. Required when `type` is `'thing'`, for other types it is automatically generated.
+  * `active` **Boolean** (Optional) Whether the gateway being created is active. Only used when `type` is `'gateway'`. Default: `false`.
 
 #### Result
 - `device` **Object** JSON object containing device details after creation on cloud.
