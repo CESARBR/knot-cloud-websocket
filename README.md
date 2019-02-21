@@ -232,7 +232,7 @@ Lists the devices registered on cloud. If a `query` is specified, only the devic
 
 #### Arguments
 
-- `query` **Object** (Optional) Search parameters.
+- `query` **Object** (Optional) Search query, written using [MongoDB query format](https://docs.mongodb.com/manual/tutorial/query-documents/).
 
 #### Result
 - `devices` **Array** Set of devices that match the constraint specified on `query`.
