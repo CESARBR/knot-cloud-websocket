@@ -568,3 +568,89 @@ async function main() {
 }
 main();
 ```
+
+# Events
+
+## Event: "registered"
+
+Triggered when a device is registered on the cloud. Only `'app'` and users receive this event.
+
+### Arguments
+
+An object containing the registered device
+
+### Example
+
+```javascript
+{
+  type: 'gateway',
+  metadata: {
+    name: 'My KNoT Gateway'
+  },
+  knot: {
+    id: '871a6907-45c0-4557-b783-6224f3de92e7',
+    active: false
+  }
+}
+```
+
+## Event: "unregistered"
+
+Triggered when a device is unregistered from the cloud. Only `'app'` and users receive this event.
+
+### Arguments
+
+An object in following format:
+- `id` **String** Device ID
+
+### Example
+
+```javascript
+{
+  id: '871a6907-45c0-4557-b783-6224f3de92e7'
+}
+```
+
+## Event: "data"
+
+Triggered when a device publishes data items. Only `'app'` and users receive this event.
+
+### Arguments
+
+An object in the following format:
+
+- `id` **String** Device ID.
+- `sensorId` **Number** Sensor ID. Value between 0 and the maximum number of sensors defined for that thing.
+- `value` **String|Boolean|Number** Sensor value. Strings must be Base64 encoded.
+
+### Example
+
+```javascript
+{
+  id: '35da7919-c9d1-4d39-ab4c-c3f2956771d7',
+  sensorId: 1,
+  value: 10.57
+}
+```
+
+## Event: "command"
+
+Triggered when a device of type `'app'` sends a command. Currently supported commands are `getData` and `setData`. Only `'thing'` receive this event.
+
+### Arguments
+
+An object in the following format:
+- `name` **String** Command name.
+- `args` **Any** (Optional) Command-defined arguments.
+
+### Example
+
+```javascript
+{
+  name: 'getData',
+  args: {
+    id: 1,
+    sensorIds: [2, 3]
+  }
+}
+```
