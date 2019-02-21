@@ -121,7 +121,7 @@ class Client extends EventEmitter {
       port: this.options.port,
       pathname: this.options.pathname,
     };
-    urlOptions.protocol = urlOptions.port === 443 ? 'wss' : this.options.protocol || 'ws';
+    urlOptions.protocol = this.options.protocol || 'wss';
 
     return url.format(urlOptions);
   }
