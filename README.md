@@ -172,17 +172,15 @@ main();
 //   knot: { id: '871a6907-45c0-4557-b783-6224f3de92e7', active: false } }
 ```
 
-### updateMetadata(id, metadata): &lt;Void&gt;
+### unregister(id): &lt;Void&gt;
 
-Updates the device metadata. Receives the `'updated'` message when succeeds and `'error'` otherwise.
+Removes a device from the cloud. Receives the `'unregistered'` message when succeeds and `'error'` otherwise.
 
 #### Arguments
 
 - `id` **String** Device ID.
-- `metadata` **Any** Device metadata.
 
 #### Example
-
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -194,14 +192,9 @@ const client = new KNoTCloudWebSocket({
 
 async function main() {
   client.on('ready', () => {
-    client.updateMetadata('7e133545550e496a', {
-      room: {
-        name: 'Lula Cardoso Ayres',
-        location: 'Tiradentes'
-      }
-    });
+    client.unregister('7e133545550e496a');
   });
-  client.on('updated', () => {
+  client.on('unregistered', () => {
     client.close();
   });
   client.on('error', (err) => {
@@ -255,114 +248,6 @@ main();
 // [ { type: 'gateway',
 //     metadata: { name: 'Raspberry' },
 //     knot: { id: 'edbc028a-f8e9-4804-93f7-92c8cc66f3aa', active: false } } ]
-```
-
-### getData(id, sensorIds): &lt;Void&gt;
-
-Requests a thing to send its current data items values. Receives the `'sent'` message when succeeds and `'error'` otherwise.
-
-#### Arguments
-
-- `id` **String** Device ID.
-- `sensorIds` **Array** Array of sensor IDs.
-
-#### Example
-
-```javascript
-const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
-const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
-  id: '78159106-41ca-4022-95e8-2511695ce64c',
-  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
-});
-
-async function main() {
-  client.on('ready', () => {
-    client.getData('7e133545550e496a', [1, 2]);
-  });
-  client.on('sent', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
-```
-
-### setData(id, data): &lt;Void&gt;
-
-Requests a thing to update its data items with the values passed as arguments. Receives the `'sent'` message when succeeds and `'error'` otherwise.
-
-#### Arguments
-
-- `id` **String** Device ID.
-- `data` **Array** Data items to be sent, each one formed by:
-  * `sensorId` **Number** Sensor ID.
-  * `value` **String|Boolean|Number** Sensor value. Strings must be Base64 encoded.
-
-#### Example
-
-```javascript
-const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
-const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
-  id: '78159106-41ca-4022-95e8-2511695ce64c',
-  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
-});
-
-async function main() {
-  client.on('ready', () => {
-    client.setData('7e133545550e496a', [{ sensorId: 1, value: false }]);
-  });
-  client.on('sent', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
-```
-
-### unregister(id): &lt;Void&gt;
-
-Removes a device from the cloud. Receives the `'unregistered'` message when succeeds and `'error'` otherwise.
-
-#### Arguments
-
-- `id` **String** Device ID.
-
-#### Example
-```javascript
-const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
-const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
-  id: '78159106-41ca-4022-95e8-2511695ce64c',
-  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
-});
-
-async function main() {
-  client.on('ready', () => {
-    client.unregister('7e133545550e496a');
-  });
-  client.on('unregistered', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
 ```
 
 ### createSessionToken(id): &lt;Void&gt;
@@ -534,6 +419,47 @@ async function main() {
 main();
 ```
 
+### updateMetadata(id, metadata): &lt;Void&gt;
+
+Updates the device metadata. Receives the `'updated'` message when succeeds and `'error'` otherwise.
+
+#### Arguments
+
+- `id` **String** Device ID.
+- `metadata` **Any** Device metadata.
+
+#### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.updateMetadata('7e133545550e496a', {
+      room: {
+        name: 'Lula Cardoso Ayres',
+        location: 'Tiradentes'
+      }
+    });
+  });
+  client.on('updated', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.error(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
+
 ### publishData(sensorId, value): &lt;Void&gt;
 
 Publishes data. Receives the `'published'` message when succeeds and `'error'` otherwise.
@@ -558,6 +484,80 @@ async function main() {
     client.publishData(253, true);
   });
   client.on('published', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.error(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
+
+### getData(id, sensorIds): &lt;Void&gt;
+
+Requests a thing to send its current data items values. Receives the `'sent'` message when succeeds and `'error'` otherwise.
+
+#### Arguments
+
+- `id` **String** Device ID.
+- `sensorIds` **Array** Array of sensor IDs.
+
+#### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.getData('7e133545550e496a', [1, 2]);
+  });
+  client.on('sent', () => {
+    client.close();
+  });
+  client.on('error', (err) => {
+    console.error(err);
+    console.log('Connection refused');
+  });
+  client.connect();
+}
+main();
+```
+
+### setData(id, data): &lt;Void&gt;
+
+Requests a thing to update its data items with the values passed as arguments. Receives the `'sent'` message when succeeds and `'error'` otherwise.
+
+#### Arguments
+
+- `id` **String** Device ID.
+- `data` **Array** Data items to be sent, each one formed by:
+  * `sensorId` **Number** Sensor ID.
+  * `value` **String|Boolean|Number** Sensor value. Strings must be Base64 encoded.
+
+#### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  hostname: 'localhost',
+  port: 3004,
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+async function main() {
+  client.on('ready', () => {
+    client.setData('7e133545550e496a', [{ sensorId: 1, value: false }]);
+  });
+  client.on('sent', () => {
     client.close();
   });
   client.on('error', (err) => {
