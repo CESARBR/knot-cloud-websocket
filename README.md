@@ -2,7 +2,7 @@
 
 A client side library that provides a WebSocket abstraction to the KNoT Cloud for Node.js and browser applications.
 
-# Getting started
+# Quickstart
 
 ## Install
 
@@ -10,7 +10,7 @@ A client side library that provides a WebSocket abstraction to the KNoT Cloud fo
 npm install --save @cesarbr/knot-cloud-websocket
 ```
 
-## Quickstart
+## Run
 
 `KNoTCloudWebSocket` connects to &lt;protocol&gt;://&lt;hostname&gt;:&lt;port&gt; using ID and token as credentials. Replace this address with your protocol adapter instance and the credentials with valid ones.
 
@@ -38,13 +38,13 @@ async function main() {
 }
 main();
 ```
-## Methods
+# Methods
 
-### constructor(options)
+## constructor(options)
 
 Create a client object that will connect to a KNoT Cloud protocol adapter instance.
 
-#### Arguments
+### Arguments
 - `options` **Object** JSON object with connection details.
   * `protocol` **String** (Optional) Either `'ws'` or `'wss'`. Default: `'ws'`.
   * `hostname` **String** KNoT Cloud protocol adapter instance host name.
@@ -53,7 +53,7 @@ Create a client object that will connect to a KNoT Cloud protocol adapter instan
   * `uuid` **String** (Deprecated) Same as `id`.
   * `token` **String** Device token.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -65,11 +65,11 @@ const client = new KNoTCloudWebSocket({
 });
 ```
 
-### connect(): &lt;Void&gt;
+## connect(): &lt;Void&gt;
 
 Connects to the protocol adapter instance. Receives the `'ready'` message when succeeds and `'error'` otherwise.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -93,11 +93,11 @@ async function main() {
 main();
 ```
 
-### close(): &lt;Void&gt;
+## close(): &lt;Void&gt;
 
 Closes the current connection.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -122,23 +122,23 @@ async function main() {
 main();
 ```
 
-### register(properties): &lt;Void&gt;
+## register(properties): &lt;Void&gt;
 
 Registers a new device. Receives the `'registered'` message when succeeds and `'error'` otherwise.
 
 Users can create `'gateway'`, `'app'` and `'thing'` and `'gateway'` can create `'thing'`.
 
-#### Arguments
+### Arguments
 - `properties` **Object** JSON object with device details
   * `type` **String** Device type. One of: `'gateway'`, `'app'` or `'thing'`.
   * `name` **String** (Optional) Human readable name for your device.
   * `id` **String** Device ID. Required when `type` is `'thing'`, for other types it is automatically generated.
   * `active` **Boolean** (Optional) Whether the gateway being created is active. Only used when `type` is `'gateway'`. Default: `false`.
 
-#### Result
+### Result
 - `device` **Object** JSON object containing device details after creation on cloud.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -172,15 +172,15 @@ main();
 //   knot: { id: '871a6907-45c0-4557-b783-6224f3de92e7', active: false } }
 ```
 
-### unregister(id): &lt;Void&gt;
+## unregister(id): &lt;Void&gt;
 
 Removes a device from the cloud. Receives the `'unregistered'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 
-#### Example
+### Example
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -206,18 +206,18 @@ async function main() {
 main();
 ```
 
-### getDevices(query): &lt;Void&gt;
+## getDevices(query): &lt;Void&gt;
 
 Lists the devices registered on cloud. If a `query` is specified, only the devices that match such query will be returned. Receives the `'devices'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `query` **Object** (Optional) Search query, written using [MongoDB query format](https://docs.mongodb.com/manual/tutorial/query-documents/).
 
-#### Result
+### Result
 - `devices` **Array** Set of devices that match the constraint specified on `query`.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -250,18 +250,18 @@ main();
 //     knot: { id: 'edbc028a-f8e9-4804-93f7-92c8cc66f3aa', active: false } } ]
 ```
 
-### createSessionToken(id): &lt;Void&gt;
+## createSessionToken(id): &lt;Void&gt;
 
 Creates a session token for a device. Receives the `'created'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 
-#### Result
+### Result
 - `token` **String** New token for the specified device.
 
-#### Example
+### Example
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -289,16 +289,16 @@ main();
 // 'a0ab6f486633ddc87dceecc98e88d7ffee60a402'
 ```
 
-### revokeSessionToken(id, token): &lt;Void&gt;
+## revokeSessionToken(id, token): &lt;Void&gt;
 
 Revokes a device session token. Receives the `'revoked'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 - `token` **String** Existing session token for the specified device.
 
-#### Example
+### Example
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -324,11 +324,11 @@ async function main() {
 main();
 ```
 
-### updateSchema(schema): &lt;Void&gt;
+## updateSchema(schema): &lt;Void&gt;
 
 Updates the thing schema. Receives the `'updated'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `schema` **Array** An array of objects in the following format:
   * `sensorId` **Number** Sensor ID. Value between 0 and the maximum number of sensors defined for that thing.
@@ -337,7 +337,7 @@ Updates the thing schema. Receives the `'updated'` message when succeeds and `'e
   * `unit` **Number** Sensor unit.
   * `name` **String** Sensor name.
 
-#### Example
+### Example
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -385,15 +385,15 @@ async function main() {
 main();
 ```
 
-### activate(id): &lt;Void&gt;
+## activate(id): &lt;Void&gt;
 
 Activates a gateway. Receives the `'activated'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 
-#### Example
+### Example
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -419,16 +419,16 @@ async function main() {
 main();
 ```
 
-### updateMetadata(id, metadata): &lt;Void&gt;
+## updateMetadata(id, metadata): &lt;Void&gt;
 
 Updates the device metadata. Receives the `'updated'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 - `metadata` **Any** Device metadata.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -460,16 +460,16 @@ async function main() {
 main();
 ```
 
-### publishData(sensorId, value): &lt;Void&gt;
+## publishData(sensorId, value): &lt;Void&gt;
 
 Publishes data. Receives the `'published'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `sensorId` **Number** Sensor ID.
 - `value` **Number** Sensor value.
 
-#### Example
+### Example
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
@@ -495,16 +495,16 @@ async function main() {
 main();
 ```
 
-### getData(id, sensorIds): &lt;Void&gt;
+## getData(id, sensorIds): &lt;Void&gt;
 
 Requests a thing to send its current data items values. Receives the `'sent'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 - `sensorIds` **Array** Array of sensor IDs.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
@@ -531,18 +531,18 @@ async function main() {
 main();
 ```
 
-### setData(id, data): &lt;Void&gt;
+## setData(id, data): &lt;Void&gt;
 
 Requests a thing to update its data items with the values passed as arguments. Receives the `'sent'` message when succeeds and `'error'` otherwise.
 
-#### Arguments
+### Arguments
 
 - `id` **String** Device ID.
 - `data` **Array** Data items to be sent, each one formed by:
   * `sensorId` **Number** Sensor ID.
   * `value` **String|Boolean|Number** Sensor value. Strings must be Base64 encoded.
 
-#### Example
+### Example
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
