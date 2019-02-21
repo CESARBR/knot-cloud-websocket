@@ -47,9 +47,9 @@ Create a client object that will connect to a KNoT Cloud protocol adapter instan
 
 ### Arguments
 - `options` **Object** JSON object with connection details.
-  * `protocol` **String** (Optional) Either `'ws'` or `'wss'`. Default: `'ws'`.
+  * `protocol` **String** (Optional) Either `'ws'` or `'wss'`. Default: `'wss'`.
   * `hostname` **String** KNoT Cloud protocol adapter instance host name.
-  * `port` **Number** KNoT Cloud protocol adapter instance port. When port is 433, protocol is automatically changed to `'wss'`.
+  * `port` **Number** KNoT Cloud protocol adapter instance port.
   * `pathname` **String** (Optional) Path name on the server.
   * `id` **String**  Device ID.
   * `uuid` **String** (Deprecated) Same as `id`.
