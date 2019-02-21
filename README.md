@@ -473,8 +473,7 @@ async function main() {
   client.on('ready', () => {
     client.revokeSessionToken('78159106-41ca-4022-95e8-2511695ce64c' 'e22dfa8d43ca0caf356f1a4930b638f2d1d98322');
   });
-  client.on('revoked', (token) => {
-    console.log(token);
+  client.on('revoked', () => {
     client.close();
   });
   client.on('error', (err) => {
@@ -484,7 +483,6 @@ async function main() {
   client.connect();
 }
 main();
-// "a0ab6f486633ddc87dceecc98e88d7ffee60a402"
 ```
 
 ### updateSchema(schema): &lt;Void&gt;
