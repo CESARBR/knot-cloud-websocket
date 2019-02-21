@@ -492,8 +492,9 @@ Updates the thing schema. Receives the `'updated'` message when succeeds and `'e
 #### Arguments
 
 - `schema` **Array** An array of objects in the following format:
-  * `sensor_id` **Number** Sensor ID. Value between 0 and the maximum number of sensors defined for that thing.
-  * `value_type` **Number** Sensor type.
+  * `sensorId` **Number** Sensor ID. Value between 0 and the maximum number of sensors defined for that thing.
+  * `typeId` **Number** Sensor type, e.g. whether it is a presence sensor or distance sensor.
+  * `valueType` **Number** Value type, e.g. whether it is an integer, a floating-point number, etc.
   * `unit` **Number** Sensor unit.
   * `name` **String** Sensor name.
 
@@ -510,15 +511,27 @@ const client = new KNoTCloudWebSocket({
 async function main() {
   client.on('ready', () => {
     client.updateSchema([
-      { "sensor_id": 251, "value_type": 02,
-      "unit": 1, "type_id": 13, "name":
-      "Tank Volume" },
-      { "sensor_id": 252, "value_type": 1,
-      "unit": 1 ,"type_id": 5, "name":
-      "Outdoor Temperature" },
-      { "sensor_id": 253, "value_type": 3,
-      "unit": 0, "type_id": 65521, "name":
-      "Lamp Status" }
+      {
+        sensorId: 251,
+        typeId: 13,
+        valueType: 2,
+        unit: 1,
+        name: 'Tank Volume'
+      },
+      {
+        sensorId: 252,
+        typeId: 5,
+        valueType: 1,
+        unit: 1,
+        name: 'Outdoor Temperature'
+      },
+      {
+        sensorId: 253,
+        typeId: 65521,
+        valueType: 3,
+        unit: 0,
+        name: 'Lamp Status'
+      }
     ]);
   });
   client.on('updated', () => {
