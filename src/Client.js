@@ -118,7 +118,7 @@ class Client extends EventEmitter {
   buildUri() {
     const urlOptions = {
       hostname: this.options.hostname,
-      port: this.options.port,
+      port: this.options.port || 443,
       pathname: this.options.pathname,
     };
     urlOptions.protocol = this.options.protocol || 'wss';
