@@ -12,13 +12,14 @@ npm install --save @cesarbr/knot-cloud-websocket
 
 ## Run
 
-`KNoTCloudWebSocket` connects to &lt;protocol&gt;://&lt;hostname&gt;:&lt;port&gt; using ID and token as credentials. Replace this address with your protocol adapter instance and the credentials with valid ones.
+`KNoTCloudWebSocket` connects to &lt;protocol&gt;://&lt;hostname&gt;:&lt;port&gt;/&lt;pathname&gt; using ID and token as credentials. Replace this address with your protocol adapter instance and the credentials with valid ones.
 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
   hostname: 'localhost',
   port: 3004,
+  pathname: '/ws',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
@@ -49,6 +50,7 @@ Create a client object that will connect to a KNoT Cloud protocol adapter instan
   * `protocol` **String** (Optional) Either `'ws'` or `'wss'`. Default: `'ws'`.
   * `hostname` **String** KNoT Cloud protocol adapter instance host name.
   * `port` **Number** KNoT Cloud protocol adapter instance port. When port is 433, protocol is automatically changed to `'wss'`.
+  * `pathname` **String** (Optional) Path name on the server.
   * `id` **String**  Device ID.
   * `uuid` **String** (Deprecated) Same as `id`.
   * `token` **String** Device token.
