@@ -52,7 +52,6 @@ Create a client object that will connect to a KNoT Cloud protocol adapter instan
   * `port` **Number** (Optional) KNoT Cloud protocol adapter instance port. Default: 443.
   * `pathname` **String** (Optional) Path name on the server.
   * `id` **String**  Device ID.
-  * `uuid` **String** (Deprecated) Same as `id`.
   * `token` **String** Device token.
 
 ### Example

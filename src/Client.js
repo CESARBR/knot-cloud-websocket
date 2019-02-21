@@ -128,8 +128,7 @@ class Client extends EventEmitter {
 
   getCrendentials() {
     return {
-      // uuid is deprecated, must be removed in the next major version
-      id: this.options.id || this.options.uuid,
+      id: this.options.id,
       token: this.options.token,
     };
   }
