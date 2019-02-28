@@ -3,6 +3,8 @@ import WebSocket from 'isomorphic-ws';
 import url from 'url';
 
 const PROXY_EVENTS = ['close', 'error', 'unexpected-response', 'ping', 'pong', 'open'];
+const FIFTEEN_SECONDS = 15 * 1000;
+const FIVE_MINUTES = 5 * 60 * 1000;
 
 class Client extends EventEmitter {
   constructor(options) {
@@ -26,7 +28,9 @@ class Client extends EventEmitter {
 
     this.socket.addEventListener('message', this.onMessage.bind(this));
     this.socket.addEventListener('open', onOpen);
+    this.socket.addEventListener('pong', this.onPong.bind(this));
     PROXY_EVENTS.forEach(this.setupProxy.bind(this));
+    this.startPinging();
   }
 
   close() {
@@ -105,6 +109,8 @@ class Client extends EventEmitter {
   }
 
   closeAndClear() {
+    clearInterval(this.pingInterval);
+    this.isPinging = false;
     this.socket.close();
     this.socket = null;
   }
@@ -145,6 +151,41 @@ class Client extends EventEmitter {
       throw error;
     }
     return message;
+  }
+
+  startPinging() {
+    if (this.isPinging) {
+      return;
+    }
+
+    if (!this.socket.ping) {
+      // eslint-disable-next-line no-console
+      console.log("WebSocket library doesn't support sending 'ping'");
+      return;
+    }
+
+    this.isPinging = true;
+    this.lastPong = Date.now();
+    this.pingInterval = setInterval(this.ping.bind(this), FIFTEEN_SECONDS);
+  }
+
+  ping() {
+    try {
+      if (this.socket) {
+        this.socket.ping(() => {});
+      }
+    } catch (error) {
+      this.emit('error', error);
+    }
+
+    const elapsedTime = Date.now() - this.lastPong;
+    if (elapsedTime > FIVE_MINUTES) {
+      this.emit('error', new Error('Ping Timeout'));
+    }
+  }
+
+  onPong() {
+    this.lastPong = Date.now();
   }
 }
 
