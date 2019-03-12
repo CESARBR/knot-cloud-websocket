@@ -28,7 +28,7 @@ async function main() {
   try {
     await client.connect();
     await client.register({
-      type: 'gateway',
+      type: 'knot:gateway',
       name: 'My KNoT Gateway'
     });
   } catch (err) {
@@ -127,14 +127,14 @@ main();
 
 Registers a new device. Receives the `'registered'` message when succeeds and `'error'` otherwise.
 
-Users can create `'gateway'`, `'app'` and `'thing'` and `'gateway'` can create `'thing'`.
+Users can create `'knot:gateway'`, `'knot:app'` and `'knot:thing'`. Gateways (`'knot:gateway'`) can create `'knot:thing'`.
 
 ### Arguments
 - `properties` **Object** JSON object with device details
-  * `type` **String** Device type. One of: `'gateway'`, `'app'` or `'thing'`.
+  * `type` **String** Device type. One of: `'knot:gateway'`, `'knot:app'` or `'knot:thing'`.
   * `name` **String** (Optional) Human readable name for your device.
-  * `id` **String** Device ID. Required when `type` is `'thing'`, for other types it is automatically generated.
-  * `active` **Boolean** (Optional) Whether the gateway being created is active. Only used when `type` is `'gateway'`. Default: `false`.
+  * `id` **String** Device ID. Required when `type` is `'knot:thing'`, for other types it is automatically generated.
+  * `active` **Boolean** (Optional) Whether the gateway being created is active. Only used when `type` is `'knot:gateway'`. Default: `false`.
 
 ### Result
 - `device` **Object** JSON object containing device details after creation on cloud.
@@ -153,7 +153,7 @@ const client = new KNoTCloudWebSocket({
 async function main() {
   client.on('ready', () => {
     client.register({
-      type: 'gateway',
+      type: 'knot:gateway',
       name: 'My KNoT Gateway'
     });
   });
@@ -168,7 +168,7 @@ async function main() {
   client.connect();
 }
 main();
-// { type: 'gateway',
+// { type: 'knot:gateway',
 //   metadata: { name: 'My KNoT Gateway' },
 //   knot: { id: '871a6907-45c0-4557-b783-6224f3de92e7', active: false } }
 ```
@@ -232,7 +232,7 @@ const client = new KNoTCloudWebSocket({
 async function main() {
   client.on('ready', () => {
     client.getDevices({
-      type: 'gateway'
+      type: 'knot:gateway'
     });
   });
   client.on('devices', (devices) => {
@@ -246,7 +246,7 @@ async function main() {
   client.connect();
 }
 main();
-// [ { type: 'gateway',
+// [ { type: 'knot:gateway',
 //     metadata: { name: 'Raspberry' },
 //     knot: { id: 'edbc028a-f8e9-4804-93f7-92c8cc66f3aa', active: false } } ]
 ```
@@ -574,7 +574,7 @@ main();
 
 ## Event: "registered"
 
-Triggered when a device is registered on the cloud. Only `'app'` and users receive this event.
+Triggered when a device is registered on the cloud. Only apps (`'knot:app'`) and users receive this event.
 
 ### Arguments
 
@@ -584,7 +584,7 @@ An object containing the registered device
 
 ```javascript
 {
-  type: 'gateway',
+  type: 'knot:gateway',
   metadata: {
     name: 'My KNoT Gateway'
   },
@@ -597,7 +597,7 @@ An object containing the registered device
 
 ## Event: "unregistered"
 
-Triggered when a device is unregistered from the cloud. Only `'app'` and users receive this event.
+Triggered when a device is unregistered from the cloud. Only apps (`'knot:app'`) and users receive this event.
 
 ### Arguments
 
@@ -614,7 +614,7 @@ An object in following format:
 
 ## Event: "data"
 
-Triggered when a device publishes data items. Only `'app'` and users receive this event.
+Triggered when a device publishes data items. Only apps `'knot:app'` and users receive this event.
 
 ### Arguments
 
@@ -636,7 +636,7 @@ An object in the following format:
 
 ## Event: "command"
 
-Triggered when a device of type `'app'` sends a command. Currently supported commands are `getData` and `setData`. Only `'thing'` receive this event.
+Triggered when a device of type `'knot:app'` sends a command. Currently supported commands are `getData` and `setData`. Only things (`'knot:thing'`) receive this event.
 
 ### Arguments
 
