@@ -5,11 +5,15 @@ import url from 'url';
 const PROXY_EVENTS = ['close', 'error', 'unexpected-response', 'ping', 'pong', 'open'];
 const FIFTEEN_SECONDS = 15 * 1000;
 const FIVE_MINUTES = 5 * 60 * 1000;
+const MINIMUM_BACKOFF_TIME_SEC = 1;
+const MAXIMUM_BACKOFF_TIME_SEC = 32;
 
 class Client extends EventEmitter {
   constructor(options) {
     super();
     this.options = options;
+    this.retries = 0;
+    this.backOffTimeSec = MINIMUM_BACKOFF_TIME_SEC;
   }
 
   connect() {
@@ -21,16 +25,45 @@ class Client extends EventEmitter {
     this.socket = new WebSocket(uri);
 
     const onOpen = () => {
+      this.retries = 0;
+      this.backOffTimeSec = MINIMUM_BACKOFF_TIME_SEC;
       const credentials = this.getCrendentials();
       this.identity(credentials);
       this.socket.removeEventListener('open', onOpen);
     };
 
+    const onClose = (e) => {
+      switch (e.code) {
+        case 1005: // CLOSE_NORMAL
+          this.close();
+          break;
+        default: // Abnormal closure
+          this.reconnect();
+          break;
+      }
+    };
+
     this.socket.addEventListener('message', this.onMessage.bind(this));
     this.socket.addEventListener('open', onOpen);
+    this.socket.addEventListener('close', onClose);
     this.socket.addEventListener('pong', this.onPong.bind(this));
     PROXY_EVENTS.forEach(this.setupProxy.bind(this));
     this.startPinging();
+  }
+
+  reconnect() {
+    this.socket.removeAllListeners();
+
+    if (this.retries === 0) {
+      this.delayMs = Math.random() * 5000;
+    } else {
+      this.delayMs = 1000 * (this.backOffTimeSec + Math.random());
+      if (this.backOffTimeSec < MAXIMUM_BACKOFF_TIME_SEC) {
+        this.backOffTimeSec *= 2;
+      }
+    }
+    setTimeout(() => this.connect(), this.delayMs);
+    this.retries += 1;
   }
 
   close() {
@@ -92,11 +125,15 @@ class Client extends EventEmitter {
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
-      const errorMessage = (message.data && message.data.message) || 'Unexpected error';
-      const error = new Error(errorMessage);
-      error.frame = event.data;
-      error.code = (message.data && message.data.code) || undefined;
-      this.emit('error', error);
+      if (event.error && (event.error.code === 'ECONNREFUSED' || event.error.code === 'EPINGTIMEOUT')) {
+        this.reconnect();
+      } else {
+        const errorMessage = (message.data && message.data.message) || 'Unexpected error';
+        const error = new Error(errorMessage);
+        error.frame = event.data;
+        error.code = (message.data && message.data.code) || undefined;
+        this.emit('error', error);
+      }
       return;
     }
 
@@ -180,7 +217,9 @@ class Client extends EventEmitter {
 
     const elapsedTime = Date.now() - this.lastPong;
     if (elapsedTime > FIVE_MINUTES) {
-      this.emit('error', new Error('Ping Timeout'));
+      const error = new Error('Ping Timeout');
+      error.code = 'EPINGTIMEOUT';
+      this.emit('error', { error });
     }
   }
 
