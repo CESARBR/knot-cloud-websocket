@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf28caa1_3328c82a",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1013086
+      },
+      "writtenOn": "2019-03-27T17:04:46Z",
+      "side": 1,
+      "message": "What is the reason behind the 2 second delay?",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "7344d38cc27502200ab6893f05d9511aed0fae87",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
