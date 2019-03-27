@@ -4,6 +4,7 @@ import url from 'url';
 
 const PROXY_EVENTS = ['close', 'error', 'unexpected-response', 'ping', 'pong', 'open'];
 const FIFTEEN_SECONDS = 15 * 1000;
+const TWO_SECONDS = 2 * 1000;
 const FIVE_MINUTES = 5 * 60 * 1000;
 
 class Client extends EventEmitter {
@@ -26,11 +27,28 @@ class Client extends EventEmitter {
       this.socket.removeEventListener('open', onOpen);
     };
 
+    const onClose = (e) => {
+      switch (e.code) {
+        case 1005: // CLOSE_NORMAL
+          this.close();
+          break;
+        default: // Abnormal closure
+          this.reconnect();
+          break;
+      }
+    };
+
     this.socket.addEventListener('message', this.onMessage.bind(this));
     this.socket.addEventListener('open', onOpen);
+    this.socket.addEventListener('close', onClose);
     this.socket.addEventListener('pong', this.onPong.bind(this));
     PROXY_EVENTS.forEach(this.setupProxy.bind(this));
     this.startPinging();
+  }
+
+  reconnect() {
+    this.socket.removeAllListeners();
+    setTimeout(() => this.connect(), TWO_SECONDS);
   }
 
   close() {
@@ -92,11 +110,15 @@ class Client extends EventEmitter {
   onMessage(event) {
     const message = this.parseFrame(event.data);
     if (message.type === 'error') {
-      const errorMessage = (message.data && message.data.message) || 'Unexpected error';
-      const error = new Error(errorMessage);
-      error.frame = event.data;
-      error.code = (message.data && message.data.code) || undefined;
-      this.emit('error', error);
+      if (event.error && event.error.code === 'ECONNREFUSED') {
+        this.reconnect();
+      } else {
+        const errorMessage = (message.data && message.data.message) || 'Unexpected error';
+        const error = new Error(errorMessage);
+        error.frame = event.data;
+        error.code = (message.data && message.data.code) || undefined;
+        this.emit('error', error);
+      }
       return;
     }
 
