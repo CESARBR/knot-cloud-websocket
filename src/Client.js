@@ -3,6 +3,7 @@ import WebSocket from 'isomorphic-ws';
 import url from 'url';
 
 const PROXY_EVENTS = ['close', 'error', 'unexpected-response', 'ping', 'pong', 'open'];
+const FIVE_SECONDS = 5 * 1000;
 const FIFTEEN_SECONDS = 15 * 1000;
 const FIVE_MINUTES = 5 * 60 * 1000;
 const MINIMUM_BACKOFF_TIME_SEC = 1;
@@ -22,7 +23,7 @@ class Client extends EventEmitter {
     }
 
     const uri = this.buildUri();
-    this.socket = new WebSocket(uri);
+    this.socket = new WebSocket(uri, { handshakeTimeout: FIVE_SECONDS });
 
     const onOpen = () => {
       this.retries = 0;
