@@ -52,6 +52,7 @@ class Client extends EventEmitter {
   }
 
   reconnect() {
+    this.emit('reconnect');
     this.socket.removeAllListeners();
 
     if (this.retries === 0) {
