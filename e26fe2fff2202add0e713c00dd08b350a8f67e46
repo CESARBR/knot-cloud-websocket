@@ -46,6 +46,30 @@
       "revId": "e26fe2fff2202add0e713c00dd08b350a8f67e46",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7214747_aa64a1b9",
+        "filename": "src/Client.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1013169
+      },
+      "writtenOn": "2019-04-05T22:58:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d976666_87896bc6",
+      "range": {
+        "startLine": 26,
+        "startChar": 57,
+        "endLine": 26,
+        "endChar": 69
+      },
+      "revId": "e26fe2fff2202add0e713c00dd08b350a8f67e46",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
