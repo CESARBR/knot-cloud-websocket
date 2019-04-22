@@ -23,7 +23,8 @@ class Client extends EventEmitter {
     }
 
     const uri = this.buildUri();
-    this.socket = new WebSocket(uri, { handshakeTimeout: FIVE_SECONDS });
+    const { protocol } = this.options;
+    this.socket = new WebSocket(uri, protocol, { handshakeTimeout: FIVE_SECONDS });
 
     const onOpen = () => {
       this.retries = 0;
@@ -54,7 +55,9 @@ class Client extends EventEmitter {
 
   reconnect() {
     this.emit('reconnect');
-    this.socket.removeAllListeners();
+    PROXY_EVENTS.forEach((eventName) => {
+      this.socket.removeEventListener(eventName, event => event.emit(eventName, event));
+    });
 
     if (this.retries === 0) {
       this.delayMs = Math.random() * 5000;
