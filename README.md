@@ -17,27 +17,26 @@ npm install --save @cesarbr/knot-cloud-websocket
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
-  pathname: '/ws',
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  try {
-    await client.connect();
-    await client.register({
-      type: 'knot:gateway',
-      name: 'My KNoT Gateway'
-    });
-  } catch (err) {
-    console.error(err);
-  }
-
-  await client.close();
-}
-main();
+client.on('ready', () => {
+  client.register({
+    id: '6e5a681b2ae7be40',
+    type: 'knot:thing',
+    name: 'Door Lock',
+  });
+});
+client.on('registered', (thing) => {
+  console.log('Registered', thing);
+  client.close();
+});
+client.connect();
 ```
 # Methods
 
@@ -59,8 +58,10 @@ Create a client object that will connect to a KNoT Cloud protocol adapter instan
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
@@ -75,23 +76,22 @@ Connects to the protocol adapter instance. Receives the `'ready'` message when s
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    console.log('Connection established');
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  console.log('Connection established');
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+});
+client.connect();
 ```
 
 ## close(): &lt;Void&gt;
@@ -103,24 +103,24 @@ Closes the current connection.
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    console.log('Connection established');
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  console.log('Connection established');
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## register(properties): &lt;Void&gt;
@@ -144,33 +144,37 @@ Users can create `'knot:gateway'`, `'knot:app'` and `'knot:thing'`. Gateways (`'
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.register({
-      type: 'knot:gateway',
-      name: 'My KNoT Gateway'
-    });
+client.on('ready', () => {
+  client.register({
+    id: '6e5a681b2ae7be40',
+    type: 'knot:thing',
+    name: 'Door Lock',
   });
-  client.on('registered', (device) => {
-    console.log(device);
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
-// { type: 'knot:gateway',
-//   metadata: { name: 'My KNoT Gateway' },
-//   knot: { id: '871a6907-45c0-4557-b783-6224f3de92e7', active: false } }
+});
+client.on('registered', (thing) => {
+  console.log(thing);
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
+// { type: 'knot:thing',
+//   metadata: { name: 'Door Lock' },
+//   knot:
+//    { gateways: [ '78159106-41ca-4022-95e8-2511695ce64c' ],
+//      id: '6e5a681b2ae7be40' },
+//   token: '40ad864d503488eda9b629825876d46cb1356bdf' }
 ```
 
 ## unregister(id): &lt;Void&gt;
@@ -185,26 +189,26 @@ Removes a device from the cloud. Receives the `'unregistered'` message when succ
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.unregister('7e133545550e496a');
-  });
-  client.on('unregistered', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.unregister('6e5a681b2ae7be40');
+});
+client.on('unregistered', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## getDevices(query): &lt;Void&gt;
@@ -223,32 +227,34 @@ Lists the devices registered on cloud. If a `query` is specified, only the devic
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.getDevices({
-      type: 'knot:gateway'
-    });
+client.on('ready', () => {
+  client.getDevices({
+    type: 'knot:thing',
   });
-  client.on('devices', (devices) => {
-    console.log(devices);
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
-// [ { type: 'knot:gateway',
-//     metadata: { name: 'Raspberry' },
-//     knot: { id: 'edbc028a-f8e9-4804-93f7-92c8cc66f3aa', active: false } } ]
+});
+client.on('devices', (devices) => {
+  console.log(devices);
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
+// [ { type: 'knot:thing',
+//     metadata: { name: 'Door Lock' },
+//     knot:
+//      { gateways: [ '78159106-41ca-4022-95e8-2511695ce64c' ],
+//        id: '6e5a681b2ae7be40' } } ]
 ```
 
 ## createSessionToken(id): &lt;Void&gt;
@@ -266,27 +272,27 @@ Creates a session token for a device. Receives the `'created'` message when succ
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.createSessionToken('7e133545550e496a');
-  });
-  client.on('created', (token) => {
-    console.log(token);
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.createSessionToken('6e5a681b2ae7be40');
+});
+client.on('created', (token) => {
+  console.log(token);
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 // 'a0ab6f486633ddc87dceecc98e88d7ffee60a402'
 ```
 
@@ -303,26 +309,26 @@ Revokes a device session token. Receives the `'revoked'` message when succeeds a
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.revokeSessionToken('78159106-41ca-4022-95e8-2511695ce64c' 'e22dfa8d43ca0caf356f1a4930b638f2d1d98322');
-  });
-  client.on('revoked', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.revokeSessionToken('6e5a681b2ae7be40', 'a0ab6f486633ddc87dceecc98e88d7ffee60a402');
+});
+client.on('revoked', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## updateSchema(schema): &lt;Void&gt;
@@ -342,48 +348,34 @@ Updates the thing schema. Receives the `'updated'` message when succeeds and `'e
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
-  id: '97159106-41ca-4022-95e8-2511695ce64c',
-  token: 'g4265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
+  id: '6e5a681b2ae7be40',
+  token: 'a0ab6f486633ddc87dceecc98e88d7ffee60a402',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.updateSchema([
-      {
-        sensorId: 251,
-        typeId: 13,
-        valueType: 2,
-        unit: 1,
-        name: 'Tank Volume'
-      },
-      {
-        sensorId: 252,
-        typeId: 5,
-        valueType: 1,
-        unit: 1,
-        name: 'Outdoor Temperature'
-      },
-      {
-        sensorId: 253,
-        typeId: 65521,
-        valueType: 3,
-        unit: 0,
-        name: 'Lamp Status'
-      }
-    ]);
-  });
-  client.on('updated', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.updateSchema([
+    {
+      sensorId: 253,
+      typeId: 0xFFF1,
+      valueType: 3,
+      unit: 0,
+      name: 'Lock'
+    }
+  ]);
+});
+client.on('updated', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## activate(id): &lt;Void&gt;
@@ -398,26 +390,26 @@ Activates a gateway. Receives the `'activated'` message when succeeds and `'erro
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.activate('871a6907-45c0-4557-b783-6224f3de92e7');
-  });
-  client.on('activated', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.activate('871a6907-45c0-4557-b783-6224f3de92e7');
+});
+client.on('activated', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## updateMetadata(id, metadata): &lt;Void&gt;
@@ -434,31 +426,31 @@ Updates the device metadata. Receives the `'updated'` message when succeeds and 
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.updateMetadata('7e133545550e496a', {
-      room: {
-        name: 'Lula Cardoso Ayres',
-        location: 'Tiradentes'
-      }
-    });
+client.on('ready', () => {
+  client.updateMetadata('6e5a681b2ae7be40', {
+    room: {
+      name: 'Lula Cardoso Ayres',
+      location: 'Tiradentes'
+    }
   });
-  client.on('updated', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+});
+client.on('updated', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## publishData(sensorId, value): &lt;Void&gt;
@@ -474,26 +466,26 @@ Publishes data. Receives the `'published'` message when succeeds and `'error'` o
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
-  id: '97159106-41ca-4022-95e8-2511695ce64c',
-  token: 'g4265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
+  id: '6e5a681b2ae7be40',
+  token: 'a0ab6f486633ddc87dceecc98e88d7ffee60a402',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.publishData(253, true);
-  });
-  client.on('published', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.publishData(253, true);
+});
+client.on('published', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## getData(id, sensorIds): &lt;Void&gt;
@@ -510,26 +502,26 @@ Requests a thing to send its current data items values. Receives the `'sent'` me
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.getData('7e133545550e496a', [1, 2]);
-  });
-  client.on('sent', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.getData('6e5a681b2ae7be40', [253]);
+});
+client.on('sent', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 ## setData(id, data): &lt;Void&gt;
@@ -548,50 +540,90 @@ Requests a thing to update its data items with the values passed as arguments. R
 ```javascript
 const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
 const client = new KNoTCloudWebSocket({
-  hostname: 'localhost',
-  port: 3004,
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
   id: '78159106-41ca-4022-95e8-2511695ce64c',
   token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
 });
 
-async function main() {
-  client.on('ready', () => {
-    client.setData('7e133545550e496a', [{ sensorId: 1, value: false }]);
-  });
-  client.on('sent', () => {
-    client.close();
-  });
-  client.on('error', (err) => {
-    console.error(err);
-    console.log('Connection refused');
-  });
-  client.connect();
-}
-main();
+client.on('ready', () => {
+  client.setData('6e5a681b2ae7be40', [{ sensorId: 253, value: false }]);
+});
+client.on('sent', () => {
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
+```
+
+## on(name, handler): &lt;Void&gt;
+
+Registers an event handler. See next section for details on events.
+
+### Arguments
+
+- `name` **String** Event name
+- `handler` **Function** Event handler.
+
+### Example
+
+```javascript
+const KNoTCloudWebSocket = require('@cesarbr/knot-cloud-websocket');
+const client = new KNoTCloudWebSocket({
+  protocol: 'wss',
+  hostname: 'ws.knot.cloud',
+  port: 443,
+  pathname: '/',
+  id: '78159106-41ca-4022-95e8-2511695ce64c',
+  token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
+});
+
+client.on('registered', (message) => {
+  console.log('Who?', message.from);
+  console.log('What?', message.payload);
+  client.close();
+});
+client.on('error', (err) => {
+  console.error(err);
+  console.log('Connection refused');
+  client.close();
+});
+client.connect();
 ```
 
 # Events
+
+Events can be listened to by registering a handler with `on()`. The handler will receive an object in the following format:
+* `from` **String** ID of the device generating the event.
+* `payload` **Any** (Optional) Event-defined payload.
 
 ## Event: "registered"
 
 Triggered when a device is registered on the cloud. Only apps (`'knot:app'`) and users receive this event.
 
-### Arguments
+### Payload
 
-An object containing the registered device
+An object containing the registered device.
 
 ### Example
 
 ```javascript
 {
-  type: 'knot:gateway',
-  metadata: {
-    name: 'My KNoT Gateway'
+  from: '78159106-41ca-4022-95e8-2511695ce64c',
+  payload: {
+    type: 'knot:thing',
+    metadata: { name: 'Door Lock' },
+    knot: {
+      gateways: [ '78159106-41ca-4022-95e8-2511695ce64c' ],
+      id: '6e5a681b2ae7be40',
+    },
   },
-  knot: {
-    id: '871a6907-45c0-4557-b783-6224f3de92e7',
-    active: false
-  }
 }
 ```
 
@@ -599,16 +631,15 @@ An object containing the registered device
 
 Triggered when a device is unregistered from the cloud. Only apps (`'knot:app'`) and users receive this event.
 
-### Arguments
+### Payload
 
-An object in following format:
-- `id` **String** Device ID
+No payload. The ID of the unregistered device will come in the `from` field.
 
 ### Example
 
 ```javascript
 {
-  id: '871a6907-45c0-4557-b783-6224f3de92e7'
+  from: '6e5a681b2ae7be40'
 }
 ```
 
@@ -616,11 +647,10 @@ An object in following format:
 
 Triggered when a device publishes data items. Only apps `'knot:app'` and users receive this event.
 
-### Arguments
+### Payload
 
 An object in the following format:
 
-- `id` **String** Device ID.
 - `sensorId` **Number** Sensor ID. Value between 0 and the maximum number of sensors defined for that thing.
 - `value` **String|Boolean|Number** Sensor value. Strings must be Base64 encoded.
 
@@ -628,9 +658,11 @@ An object in the following format:
 
 ```javascript
 {
-  id: '35da7919-c9d1-4d39-ab4c-c3f2956771d7',
-  sensorId: 1,
-  value: 10.57
+  from: '6e5a681b2ae7be40',
+  payload: {
+    sensorId: 253,
+    value: true,
+  },
 }
 ```
 
@@ -638,7 +670,7 @@ An object in the following format:
 
 Triggered when a device of type `'knot:app'` sends a command. Currently supported commands are `getData` and `setData`. Only things (`'knot:thing'`) receive this event.
 
-### Arguments
+### Payload
 
 An object in the following format:
 - `name` **String** Command name.
@@ -648,10 +680,10 @@ An object in the following format:
 
 ```javascript
 {
-  name: 'getData',
-  args: {
-    id: 1,
-    sensorIds: [2, 3]
-  }
+  from: '78159106-41ca-4022-95e8-2511695ce64c',
+  payload: {
+    name: 'getData',
+    args: [253],
+  },
 }
 ```
