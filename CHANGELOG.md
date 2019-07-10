@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/CESARBR/knot-cloud-websocket/compare/v1.1.1...v1.1.2)
+
+### Bug Fixes
+
+- Update packages to fix vulnerability issues
+
 ## [1.1.1](https://github.com/CESARBR/knot-cloud-websocket/compare/v1.0.0...v1.0.1)
 
 ### Documentation
