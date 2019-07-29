@@ -513,8 +513,8 @@ const client = new KNoTCloudWebSocket({
 client.on('ready', () => {
   client.getData('6e5a681b2ae7be40', [253]);
 });
-client.on('sent', () => {
-  client.close();
+client.on('data', (data) => {
+  console.log(JSON.stringify(data, null, 2));
 });
 client.on('error', (err) => {
   console.error(err);
