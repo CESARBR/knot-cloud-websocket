@@ -1,3 +1,9 @@
+## [1.1.3](https://github.com/CESARBR/knot-cloud-websocket/compare/v1.1.2...v1.1.3)
+
+### Documentation
+
+- Update `getData` command example to listen to the `data` event instead of the `sent` event.
+
 ## [1.1.2](https://github.com/CESARBR/knot-cloud-websocket/compare/v1.1.1...v1.1.2)
 
 ### Bug Fixes
